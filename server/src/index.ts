@@ -2,7 +2,7 @@ import express from 'express';
 import { config as ConfigApp } from '@src/config/config';
 import { createServer } from 'http';
 import { MongoDBClient } from '@src/clients/database/mongodb/mongodb_client';
-import { WebSocketAdapter } from './websocket';
+import { WebSocket as WebSocketAdapter } from '@src/websocket';
 import { ChatService } from '@src/modules/chat/application/services/chat.service';
 import { ChatRepository } from '@src/modules/chat/infrastructure/repositories/chat.repository';
 import { OpenAIClient } from '@src/clients/openai/openai_client';

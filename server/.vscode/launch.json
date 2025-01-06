@@ -1,0 +1,22 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "WS Chatbot",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceFolder}/src/index.ts",
+      "args": [],
+      "preLaunchTask": "tsc: build - tsconfig.json",
+      "sourceMaps": true,
+      //"outFiles": ["${workspaceFolder}/dist/**/*.js"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "console": "integratedTerminal",
+      "stopOnEntry": false,
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": ["-r", "ts-node/register", "-r", "tsconfig-paths/register"]
+    }
+  ]
+}

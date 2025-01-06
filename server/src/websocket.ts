@@ -1,10 +1,11 @@
 import { Server as WebSocketServer } from 'socket.io';
 import { ChatService } from '@src/modules/chat/application/services/chat.service';
+import { Server } from 'http';
 
-export class WebSocketAdapter {
+export class WebSocket {
   private io: WebSocketServer;
 
-  constructor(httpServer: any, private chatService: ChatService) {
+  constructor(httpServer: Server, private chatService: ChatService) {
     this.io = new WebSocketServer(httpServer, {
       cors: {
         origin: '*',
