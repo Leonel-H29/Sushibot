@@ -1,7 +1,7 @@
 import { config } from '@src/config/config';
 import OpenAI from 'openai';
 import { assistanceRestaurantPrompt } from '@src/clients/openai/prompts/assistanceRestaurant.prompt.openai';
-import { get } from 'lodash';
+import { isEmpty } from 'lodash';
 
 export class OpenAIClient {
   private readonly client: OpenAI;
@@ -25,13 +25,11 @@ export class OpenAIClient {
         ],
       });
 
-      const choices = String(await response.choices[0].message);
+      const chosenMessage = response.choices[0].message.content;
 
-      return get(
-        choices,
-        'content',
-        "I'm sorry, I couldn't understand your request."
-      );
+      return isEmpty(chosenMessage)
+        ? "I'm sorry, I couldn't understand your request.."
+        : String(chosenMessage);
     } catch (error) {
       console.error('Error handling client message:', error);
       return "I'm sorry, I couldn't process your request.";

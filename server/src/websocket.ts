@@ -1,24 +1,24 @@
-import { Server as WebSocketServer } from 'socket.io';
+import WebSocket, { WebSocketServer } from 'ws';
 import { ChatService } from '@src/modules/chat/application/services/chat.service';
 import { Server } from 'http';
 
-export class WebSocket {
-  private io: WebSocketServer;
+export class WebSocketConfig {
+  private wss: WebSocketServer;
 
   constructor(httpServer: Server, private chatService: ChatService) {
-    this.io = new WebSocketServer(httpServer, {
-      cors: {
-        origin: '*',
-        methods: ['GET', 'POST'],
-      },
-    });
+    this.wss = new WebSocketServer({ server: httpServer });
 
-    this.io.on('connection', (socket) => {
-      console.log(`A user connected: ${socket.id}`);
+    this.wss.on('connection', (ws: WebSocket) => {
+      console.log('A user connected');
 
-      socket.on('message', async (message: string) => {
-        const response = await this.chatService.createChat(message);
-        socket.emit('message', response);
+      ws.on('message', async (message: WebSocket.RawData) => {
+        const messageString = message.toString();
+        const response = await this.chatService.createChat(messageString);
+        ws.send(JSON.stringify(response));
+      });
+
+      ws.on('close', () => {
+        console.log('Client disconnected');
       });
     });
   }
