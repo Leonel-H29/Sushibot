@@ -14,9 +14,9 @@ export const Message: React.FC<MessageProps> = ({ message }) => {
       ? 'left'
       : ('right' as React.CSSProperties['textAlign']),
     backgroundColor: isClient ? '#e5e5ea' : '#dcf8c6',
-    padding: '10px',
-    borderRadius: '20px',
-    margin: '5px',
+    padding: '0.625rem',
+    borderRadius: '1.25rem',
+    margin: '0.3125rem',
     display: 'block',
     maxWidth: '80%',
   };
