@@ -28,7 +28,9 @@ export const Message: React.FC<MessageProps> = ({ message }) => {
       className={isClient ? 'client-message' : 'assistant-message'}
     >
       <Markdown>{message.content}</Markdown>
-      <span>{new Date(message.timestamp).toLocaleString()}</span>
+      <span style={{ fontSize: '0.70rem' }}>
+        {new Date(message.timestamp).toLocaleString()}
+      </span>
     </div>
   );
 };

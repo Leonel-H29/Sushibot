@@ -16,7 +16,14 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
   };
 
   return (
-    <InputGroup className="fixed-bottom mb-3">
+    <InputGroup
+      className="fixed-bottom mb-3"
+      style={{
+        maxWidth: '97%',
+        margin: '0.5rem',
+        padding: '0.5rem',
+      }}
+    >
       <FormControl
         placeholder="Type a message..."
         value={message}
