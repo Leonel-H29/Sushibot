@@ -3,10 +3,9 @@ import { useReceiveMessage } from '@src/modules/chat/application/use-cases/useRe
 import { ChatService } from '@src/modules/chat/application/services/chat.service';
 import { ChatWindow } from '@src/components/chat/ChatWindow';
 import { ChatInput } from '@src/components/chat/ChatInput';
-import { configApp } from '@src/config/configApp';
 
 function App() {
-  const chatService = new ChatService(configApp.serverApiUrl);
+  const chatService = new ChatService();
   const sendMessage = useSendMessage(chatService);
   const messages = useReceiveMessage(chatService);
 

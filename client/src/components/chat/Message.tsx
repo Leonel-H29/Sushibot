@@ -1,19 +1,34 @@
 import React from 'react';
 import { IMessage } from '@src/modules/chat/domain/interfaces/message.interface';
+import { Author } from '@src/modules/chat/domain/enum/author.enum';
+import Markdown from 'react-markdown';
 
 interface MessageProps {
   message: IMessage;
 }
 
 export const Message: React.FC<MessageProps> = ({ message }) => {
+  const isClient = message.author === Author.CLIENT;
+  const messageStyle = {
+    textAlign: isClient
+      ? 'left'
+      : ('right' as React.CSSProperties['textAlign']),
+    backgroundColor: isClient ? '#e5e5ea' : '#dcf8c6',
+    padding: '10px',
+    borderRadius: '20px',
+    margin: '5px',
+    display: 'block',
+    maxWidth: '80%',
+  };
+
+  console.log('MESSAGE', message);
   return (
     <div
-      className={
-        message.author === 'client' ? 'client-message' : 'assistant-message'
-      }
+      style={messageStyle}
+      className={isClient ? 'client-message' : 'assistant-message'}
     >
-      <p>{message.content}</p>
-      <span>{message.timestamp.toLocaleTimeString()}</span>
+      <Markdown>{message.content}</Markdown>
+      <span>{new Date(message.timestamp).toLocaleString()}</span>
     </div>
   );
 };

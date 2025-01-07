@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { InputGroup, FormControl, Button } from 'react-bootstrap';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
@@ -15,14 +16,17 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSendMessage }) => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
+    <InputGroup className="fixed-bottom mb-3">
+      <FormControl
+        placeholder="Type a message..."
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        placeholder="Type a message..."
       />
-      <button onClick={handleSend}>Send</button>
-    </div>
+      <>
+        <Button variant="primary" onClick={handleSend}>
+          Send
+        </Button>
+      </>
+    </InputGroup>
   );
 };

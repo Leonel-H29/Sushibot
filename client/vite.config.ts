@@ -15,4 +15,8 @@ export default defineConfig({
       },
     ],
   },
+  define: {
+    'process.env.SERVER_API_URL': JSON.stringify(process.env.SERVER_API_URL),
+    'process.env.PORT': JSON.stringify(process.env.PORT),
+  },
 });
