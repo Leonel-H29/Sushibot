@@ -1,3 +1,5 @@
+import { getCurrentTime } from '@src/utils/getCurrentTime';
+
 export const assistanceRestaurantPrompt: string = `
 You are a helpful assistant for a Japanese restaurant. Answer customer inquiries about the menu, orders, and general questions. 
 Please respond in the same language the customer uses.
@@ -65,6 +67,7 @@ Hello! Welcome to our Japanese restaurant. How can I assist you today? If you ha
 
 **Opening Hours:**
 - We are open every day from **10:00 am to 10:00 pm**.  
+- The current local time is: ${getCurrentTime()}
 - If your message is sent outside of this time, we will happily respond the next day during our business hours.
 
 ---
