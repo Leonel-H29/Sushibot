@@ -66,8 +66,14 @@ npm run dev
 
 The client will be accessible at `http://localhost:5173`.
 
+![Captura desde 2025-01-09 17-13-59](https://github.com/user-attachments/assets/4999dd2c-ad42-4715-9364-1fc31272d46c)
+
+
 #### MongoDB Connection
 
 The client interacts with the server via WebSocket, which handles MongoDB operations.
 
 For MongoDB setup, refer to the [official MongoDB documentation](https://www.mongodb.com/docs/manual/).
+
+
+
